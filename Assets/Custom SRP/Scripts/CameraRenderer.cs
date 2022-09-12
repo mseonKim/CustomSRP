@@ -6,12 +6,14 @@ using UnityEngine.Rendering;
 public partial class CameraRenderer
 {
     private static ShaderTagId unlitShaderTagId = new ShaderTagId("SRPDefaultUnlit");
+    private static ShaderTagId litShaderTagId = new ShaderTagId("CustomLit");
 
     private ScriptableRenderContext context;
 	private Camera camera;
     private const string bufferName = "Render Camera";
 	private CommandBuffer buffer = new CommandBuffer { name = bufferName };
     private CullingResults cullingResults;
+    private Lighting lighting = new Lighting();
 
 	public void Render (ScriptableRenderContext context, Camera camera, bool useDynamicBatching, bool useGPUInstancing)
     {
@@ -26,6 +28,7 @@ public partial class CameraRenderer
         }
 
         Setup();
+        lighting.Setup(context, cullingResults);
         DrawVisibleGeometry(useDynamicBatching, useGPUInstancing);
         DrawUnsupportedShaders();
         DrawGizmos();
@@ -52,6 +55,7 @@ public partial class CameraRenderer
                                 enableDynamicBatching = useDynamicBatching,
                                 enableInstancing = useGPUInstancing
                             };
+        drawingSettings.SetShaderPassName(1, litShaderTagId);
 		context.DrawRenderers(cullingResults, ref drawingSettings, ref filteringSettings);
 
         // Draw Skybox
