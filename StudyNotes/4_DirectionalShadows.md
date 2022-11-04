@@ -18,6 +18,7 @@ Directional Light가 2개 이상일 경우 설정된 Atlas size를 split하여 �
 최대 4개 Directional Light 지원.
 
 
+
 ## Cascaded Shadow Maps
 Directional Light는 max distance까지 포함된 모든 물체들에 영향을 미치므로 Shadow map이 많은 영역을 커버하게 됨.
 Shadow map은 orthographic projection을 활용하고 각 texel은 고정된 world-space를 가짐. 이에 해상도가 낮을 수록 부정확한 결과를 갖게 됨.
@@ -44,5 +45,7 @@ Normal Bias
 ### Cascade Blend
 다른 Cascade Map을 사용할 경우 해상도가 다르기 때문에 그림자가 Cascade 적용 경계에서 확 변하는 느낌이 발생함.
 이런 Hard한 것을 보완해주는 방법으로 Soft, Dither를 구현.
+
 <img width = "400" src="Images_jpg/4_CascadeBlend.png">
+
 왼쪽부터 Hard, Soft, Dither

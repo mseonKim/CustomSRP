@@ -6,6 +6,7 @@ Color의 경우 색의 종류가 이 튜토리얼에서 중요한 부분이 아�
 
 
 렌더파이프라인에서 SRP Batcher, GPU Instancing, Dynamic Batching 사용 여부는 튜토리얼처럼 Pipeline Asset에서 조작하여 테스트해볼 수 있게끔 하였습니다.
+
 <img width = "400" src="Images_jpg/2_PipelineAsset.png">
 
 
@@ -18,7 +19,7 @@ Color의 경우 색의 종류가 이 튜토리얼에서 중요한 부분이 아�
 <img width = "400" src="Images_jpg/2_GPU_Instancing.png">
 
 
-## Dyanmic Batching
+## Dynamic Batching
 동일한 Material을 사용하는 작은 Mesh들을 CPU에서 지오메트리 정보를 연산, 런타임에서 하나의 Mesh로 합치는 방법.
 특정 vertex 수 이하(300개) 제한 조건이 있으며 Skinned Mesh는 불가.
 GPU Instancing과 마찬가지로 SRP Batcher가 더 우선순위로 실행됨.
